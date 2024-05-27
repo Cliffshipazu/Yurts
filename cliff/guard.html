@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Guard</title>
+    <link rel="icon" href="https://i.imgur.com/AwQlwsh.jpeg" type="image/jpeg">
+    <meta name="author" content="https://www.facebook.com/swordigo.swordslush">
+    <meta name="description" content="webtool created by cliff">
+    <meta property="og:image" content="https://i.imgur.com/AwQlwsh.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css">
+ <style>
+ /*body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-y: scroll;
+}*/body {
+         padding: 20px;
+         font-family: 'Poppins', sans-serif;
+         color: #000000FF;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+           background-image: url("https://i.imgur.com/z28poj5.png");
+           background-repeat: repeat;
+           -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+           -moz-animation: bg-scrolling-reverse 0.92s infinite;
+           -o-animation: bg-scrolling-reverse 0.92s infinite;
+           animation: bg-scrolling-reverse 0.92s infinite;
+           -webkit-animation-timing-function: linear;
+           -moz-animation-timing-function: linear;
+           -o-animation-timing-function: linear;
+           animation-timing-function: linear;
+         }
+
+         @-webkit-keyframes bg-scrolling-reverse {
+           100% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @-moz-keyframes bg-scrolling-reverse {
+           100% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @-o-keyframes bg-scrolling-reverse {
+           100% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @keyframes bg-scrolling-reverse {
+           100% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @-webkit-keyframes bg-scrolling {
+           0% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @-moz-keyframes bg-scrolling {
+           0% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @-o-keyframes bg-scrolling {
+           0% {
+             background-position: 50px 50px;
+           }
+         }
+
+         @keyframes bg-scrolling {
+           0% {
+             background-position: 50px 50px;
+           }
+         }
+
+.container {
+         background-color: #FFFFFFFF;
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         padding: 20px;
+         margin: 20px auto;
+         overflow: auto;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+#api-docs {
+    padding: 20px;
+}
+
+.code-container {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.copy-btn-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.copy-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+/* hszz 
+body {
+    animation: rainbow-background 10s infinite;
+}
+
+@keyframes rainbow-background {
+    0% { background-color: #ff0000; }
+    16.666% { background-color: #ff8000; }
+    33.333% { background-color: #ffff00; }
+    50% { background-color: #00ff00; }
+    66.666% { background-color: #0000ff; }
+    83.333% { background-color: #8000ff; }
+    100% { background-color: #ff0000; }
+}
+
+/* Rainbow Highlight for Code */
+.language-js .token.comment,
+.language-js .token.prolog,
+.language-js .token.doctype,
+.language-js .token.cdata {
+    color: #FF0000; /* Red */
+}
+
+.language-js .token.punctuation {
+    color: #FF8000; /* Orange */
+}
+
+.language-js .token.namespace {
+    opacity: 0.7;
+}
+
+.language-js .token.property,
+.language-js .token.tag,
+.language-js .token.constant,
+.language-js .token.symbol,
+.language-js .token.deleted {
+    color: #FFFF00; /* Yellow */
+}
+
+.language-js .token.boolean,
+.language-js .token.number {
+    color: #00FF00; /* Green */
+}
+
+.language-js .token.selector,
+.language-js .token.attr-name,
+.language-js .token.string,
+.language-js .token.char,
+.language-js .token.builtin,
+.language-js .token.inserted {
+    color: #0000FF; /* Blue */
+}
+
+.language-js .token.operator,
+.language-js .token.entity,
+.language-js .token.url,
+.language-js .language-css .token.string,
+.style .token.string,
+.language-js .token.variable {
+    color: #8000FF; /* Purple */
+}
+
+.language-js .token.atrule,
+.language-js .token.attr-value,
+.language-js .token.function,
+.language-js .token.class-name {
+    color: #FF00FF; /* Pink */
+}
+
+.language-js .token.keyword {
+    color: #FF0000; /* Red */
+}
+
+.language-js .token.regex,
+.language-js .token.important {
+    color: #FF8000; /* Orange */
+}
+
+.language-js .token.bold {
+    font-weight: bold;
+}
+
+.language-js .token.italic {
+    font-style: italic;
+}
+
+.language-js .token.entity {
+    cursor: help;
+}
+
+/* Guard Css */
+#particles-js {
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   top: 0;
+   left: 0;
+}
+h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1C3144;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 8px;
+            color: #FFFFFF;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #36383b;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+        }
+        button:hover {
+            background-color: #101012;
+        }
+        .response, .loading, .error {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .response {
+            background-color: rgba(255, 255, 255, 0.9);
+            display: none;
+        }
+        .loading, .error {
+            background-color: #474545;
+            color: #474545;
+            display: none;
+        }
+        .about-us {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .about-us h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #1C3144;
+        }
+        .about-us p {
+            font-size: 18px;
+            line-height: 1.6;
+    }
+ </style>
+</head>
+<body>
+<div class="wrapper-container">
+         <div class="container">
+          <h2>FACEBOOK GUARD</h2>
+        <p>A simple guard facebook profile using access token by Cliff Vincent.</p>
+         </div>
+    <section id="api-docs">
+      <form id="guardForm">
+          <label for="token">Access Token:</label>
+          <input type="text" id="token" name="token" placeholder="Enter your access token" required>
+          <label for="enable">Enable:</label>
+          <input type="text" id="enable" name="enable" placeholder="Enter true(on) if false(off)" required>
+          <button type="submit">Guard Profile</button>
+      </form>
+      <div class="loading" id="loading">Loading...</div>
+      <div class="response" id="response"></div>
+      <div class="error" id="error">    </div>
+      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles.json"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS.load('particles-js', 'particles.json', function () {
+                console.log('particles.js loaded');
+            });
+        });
+
+    function copyCode() {
+    var code = document.querySelector('.code-container code');
+    var range = document.createRange();
+    range.selectNode(code);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    alert('Code copied to clipboard!');
+}
+
+/* GUARD PPROFIL */
+        document.getElementById("guardForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const token = document.getElementById("token").value.trim();
+            const enable = document.getElementById("enable").value.trim();
+            if (token === '' || enable === '') {
+                showError("Access token and options of True(on) & False(off) are required.");
+                return;
+            }
+guardProfile(token, enable);
+        });
+
+function guardProfile(token, enable) {
+            const loadingDiv = document.getElementById("loading");
+            const responseDiv = document.getElementById("response");
+            const errorDiv = document.getElementById("error");
+
+            loadingDiv.style.display = "block";
+            responseDiv.style.display = "none";
+            errorDiv.style.display = "none";
+
+    axios.post(`/guard?token=${token}&enable=${enable}`)
+        .then(response => {
+            const responseData = response.data;
+            responseDiv.innerHTML = JSON.stringify(responseData);
+            responseDiv.style.display = "block";
+            loadingDiv.style.display = "none";
+            if (responseData && responseData.success) {
+                alert("Successfully Guarded! Please check your profile.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            loadingDiv.style.display = "none";
+            if (error.response && error.response.status === 400) {
+                showError("Invalid access token or profile ID. Please check and try again.");
+            } else {
+                showError("An error occurred. Please try again later.");
+            }
+        });
+    }
+
+function showError(message) {
+            const errorDiv = document.getElementById("error");
+            errorDiv.innerHTML = message;
+            errorDiv.style.display = "block";
+}
+  </script>
+<body>
+<html>

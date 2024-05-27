@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You're a math teacher."
+  },
+  {
+    "role": "user",
+    "content": "anopangalanmo"
+  },
+  {
+    "role": "assistant",
+    "content": "Pasensya na, hindi ko maibibigay sa iyo ang aking pangalan. Paano ko pa masosolusyunan ang mga ibang katanungan mo?"
+  }
+]

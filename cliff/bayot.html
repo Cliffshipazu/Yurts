@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnovisionAI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-ZtMvTm3TIHSSBzoiGoHEa+lFeoIYWi+UUJvO7Wph0NrfWhBEtd+5uyzpDmI9/yeYXrGdHX4C6h32Jx3ax2sBbw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="https://i.imgur.com/jnfrmbe.jpeg">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-colotgr: black;/*f5f5f5*/
+      color: #fff;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 45px;
+    }
+
+    .header {
+      background-color: #000;/*2c3e50*/
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0px 0px 50px rgba(50, 50, 50, 25);
+    }
+
+    .header-links {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .header-link {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    .header a {
+      color: #0ff;
+      text-decoration: none;
+      }
+
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: block;
+      margin-bottom: 20px;
+      opacity: 85%;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 2.5);
+    }
+
+    .header p {
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .copy-icon {
+      background-image: url("https://i.imgur.com/ZRHnuKN.png");
+      background-size: cover;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      border-radius: 50%;
+      padding: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .copy-icon:hover {
+      background-color: #ddd;
+    }
+
+    .message {
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .user-message {
+      background-color: #000;/*3498db*/
+      text-align: right;
+      color: #fff;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 2.5);
+    }
+
+    .bot-message {
+      background-color: #000;/*c9f0f1*/
+      text-align: left;
+      position: relative;
+      box-shadow: 0px 0px 10px rgba(90, 90, 90, 2.5);
+    }
+
+    .user-input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 13px;
+      background-color: transparent;
+      font-size: 16px;
+      box-shadow: 0px 0px 6px rgba(255, 255, 255, 2.5);
+      transition: border-color 0.3s ease;
+      outline: none;
+      margin-right: 10px;
+    }
+
+    .send-button {
+      padding: 15px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0px 0px 5px rgba(90, 90, 90, 2.5);
+    }
+
+    .send-button i {
+      color: #000;
+    }
+
+    .send-button:hover {
+      background-color: #333;
+    }
+
+      .container-e {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;/*f1f1f1*/
+    padding: 10px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 2.5);
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-message .avatar {
+      float: left;
+    }
+
+    .bot-message .avatar {
+      float: right;
+      box-shadow: 0px 0px 5px rgba(255, 255, 255, 2.5);
+    }
+
+    @media screen and (max-width: 600px) {
+      .message {
+        padding: 15px;
+      }
+
+      .user-input {
+        padding: 10px;
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .send-button {
+        padding: 10px;
+      }
+
+      .header-links {
+        top: 10px;
+        right: 10px;
+      }
+
+      .header-link {
+        margin-left: 10px;
+        font-size: 14px;
+      }
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+      }
+    }
+ </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://i.imgur.com/jnfrmbe.jpeg" alt="Profile Image" class="profile-image">
+    <h1>Innovision AI Buddy</h1>
+    <p>Made by <a href="https://www.facebook.com/swordigo.swordslush">YAZKY</a></p>
+  </div>
+
+  <div class="container" id="container">
+  </div>
+
+  <div class="container-e">
+    <div class="input-container">
+      <input type="text" id="user-input" class="user-input" placeholder="Message Yumi...">
+      <button id="send-button" class="send-button">Send</button>
+    </div>
+  </div>
+
+<script>
+  let c = document.getElementById('container');
+  let button = document.getElementById('send-button');
+  let input = document.getElementById('user-input');
+  let randomNumber = Math.floor(Math.random() * 1000) + 50;
+
+  let aiAvatarURL = "https://i.imgur.com/MSqNs47.jpeg";
+  let userAvatarURL = "https://i.imgur.com/cw48iRS.png";
+
+  let initialMessage = document.createElement('div');
+  initialMessage.classList.add('message', 'bot-message');
+  initialMessage.style.textAlign = "center";
+  initialMessage.innerHTML = "How can I help you today?";
+  c.appendChild(initialMessage);
+
+  async function sendMessage() {
+    let userInput = input.value;
+    if (!userInput.trim()) return; 
+    input.value = '';
+
+    let userMessage = document.createElement('div');
+    userMessage.classList.add('message', 'user-message');
+    userMessage.innerHTML = `
+      <img src="${userAvatarURL}" alt="User Avatar" class="avatar user-avatar">
+      <div>${userInput}</div>
+    `;
+    c.appendChild(userMessage);
+    c.scrollTop = c.scrollHeight;
+
+    let processingMessage = document.createElement('div');
+    processingMessage.classList.add('message', 'bot-message');
+    processingMessage.innerText = "Inno is processing your question, please wait for a moment.";
+    c.appendChild(processingMessage);
+
+    try {
+      let response = await getBotResponse(userInput);
+      c.removeChild(processingMessage);
+
+      let botMessage = document.createElement('div');
+      botMessage.classList.add('message', 'bot-message');
+      botMessage.innerHTML = `
+        <img src="${aiAvatarURL}" alt="AI Avatar" class="avatar ai-avatar">
+        <div>${response}</div>
+      `;
+      c.appendChild(botMessage);
+
+      let copyIcon = document.createElement('div');
+      copyIcon.classList.add('copy-icon');
+      copyIcon.addEventListener('click', () => {
+        let responseWithoutBr = response.replace(/<br>/g, '\n'); 
+        navigator.clipboard.writeText(responseWithoutBr).then(() => {
+            alert("Copied to clipboard");
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
+      });
+      botMessage.appendChild(copyIcon);
+    } catch (error) {
+      console.error('Error:', error.message);
+      processingMessage.innerText = 'Error: ' + error.message;
+    }
+    c.scrollTop = c.scrollHeight;
+  }
+
+  button.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  });
+
+  async function getBotResponse(userInput) {
+    let url = `https://69070.replit.app/architecture?ask=${userInput}`;
+    let response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    let data = await response.json();
+    let botResponse = data.architecture;
+
+    if (userInput.toLowerCase().includes('who made you') || userInput.toLowerCase().includes('who created you')) {
+
+        botResponse = "I was created by CLiff Vincent. If you encounter any bugs or issues, please feel free to chat with me on my Facebook account: <a href='https://www.facebook.com/swordigo.swordslush' target='_blank'>Cliff イ</a>";
+
+      }
+
+    if (userInput.toLowerCase().includes('who are you') || userInput.toLowerCase().includes('who you')) {
+
+        botResponse = "Such a nice question you have! I am an AI assistant created by <a href='https://www.facebook.com/profile.php?id=61550011623347' target='_blank'>Charlie イ</a> and here to help answer your questions and provide information on a variety of topics.";
+
+      }
+
+    if (userInput.toLowerCase().includes('what is your name') || userInput.toLowerCase().includes('whats your name')) {
+
+        botResponse = "I am a language model AI assistant powered by OpenAI. You can call me Inno. How may I assist you today?";
+
+      }
+
+    botResponse = botResponse.replace(/\n/g, '<br>'); 
+    return botResponse;
+  }
+</script>
+</body>
+  </html>

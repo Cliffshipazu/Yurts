@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHATBOT</title>
+  <link rel="icon" href="https://i.imgur.com/AwQlwsh.jpeg" type="image/jpeg">
+    <meta name="author" content="https://www.facebook.com/swordigo.swordslush">
+    <meta name="description" content="webtool created by cliff">
+    <meta property="og:image" content="https://i.imgur.com/AwQlwsh.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 30vh;
+      background-image: url("https://i.imgur.com/z28poj5.png");
+      background-repeat: repeat;
+      -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+      -moz-animation: bg-scrolling-reverse 0.92s infinite;
+      -o-animation: bg-scrolling-reverse 0.92s infinite;
+      animation: bg-scrolling-reverse 0.92s infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-timing-function: linear;
+      -o-animation-timing-function: linear;
+      animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes bg-scrolling-reverse {
+      100% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @-moz-keyframes bg-scrolling-reverse {
+      100% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @-o-keyframes bg-scrolling-reverse {
+      100% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @keyframes bg-scrolling-reverse {
+      100% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @-webkit-keyframes bg-scrolling {
+      0% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @-moz-keyframes bg-scrolling {
+      0% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @-o-keyframes bg-scrolling {
+      0% {
+        background-position: 50px 50px;
+      }
+    }
+
+    @keyframes bg-scrolling {
+      0% {
+        background-position: 50px 50px;
+      }
+    }
+
+    .body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+    }
+
+    .messages-container {
+      padding: 15px;
+      overflow-y: auto;
+      flex: 1;
+      width: 100%;
+      max-height: calc(100vh - 60px);
+      position: relative;
+    }
+
+    .message {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .user-message {
+      justify-content: flex-end;
+    }
+
+    .bot-message {
+      justify-content: flex-start;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .avatar img {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    .message-content {
+      padding: 10px;
+      border-radius: 20px;
+      display: inline-block;
+      position: relative;
+      max-width: 70%;
+    }
+
+    .user-message-content {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .bot-message-content {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: #666;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+    }
+
+    .input-container {
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .input-field {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-right: 10px;
+      outline: none;
+    }
+
+    .send-button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .send-button:hover {
+      background-color: #0056b3;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="body">
+    <div class="messages-container" id="messagesContainer"></div>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="userInput" class="input-field" placeholder="Type your message...">
+    <button onclick="sendMessage()" class="send-button">𝖲𝖾𝗇𝖽</button>
+  </div>
+
+  <audio id="userSound" src="https://files.catbox.moe/739y72.mp3"></audio>
+  <audio id="botSound" src="https://files.catbox.moe/dtja9q.mp3"></audio>
+
+  <script>
+    document.getElementById('userInput').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    async function generateBotResponse(userInput) {
+      try {
+        const response = await fetch(`/gemini?prompt=${encodeURIComponent(userInput)}`);
+        const responseData = await response.json();
+
+        if (response.ok) {
+          const botMessage = responseData.success;
+          await typeMessage('bot', botMessage);
+          document.getElementById('botSound').play(); 
+        } else {
+          throw new Error('Error generating response');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        appendMessage('bot', 'Internal server error. Please try again later.');
+        document.getElementById('botSound').play(); 
+      }
+    }
+
+    async function typeMessage(sender, message) {
+      const delay = 1;
+      const messageContent = document.createElement('div');
+      messageContent.classList.add('message-content', `${sender}-message-content`);
+      const avatar = `<div class="avatar"><img src="${sender === 'user' ? 'https://i.imgur.com/41EDcSS.jpeg' : 'https://i.imgur.com/LVJRT0J.jpeg'}" alt="${sender === 'user' ? 'User Avatar' : 'Bot Avatar'}"></div>`;
+      const timestamp = `<span class="timestamp">${getFormattedTimestamp()}</span>`;
+      const text = '<div class="text"></div>';
+      messageContent.innerHTML = `${avatar}${timestamp}${text}`;
+      const messagesContainer = document.getElementById('messagesContainer');
+      messagesContainer.appendChild(messageContent);
+      const textElement = messageContent.querySelector('.text');
+
+      const soundElement = document.getElementById(`${sender}Sound`);
+      soundElement.play(); 
+
+      for (let i = 0; i < message.length; i++) {
+        await sleep(delay);
+        textElement.textContent += message[i];
+        scrollToBottom(messagesContainer);
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function appendMessage(sender, message) {
+      const messagesContainer = document.getElementById('messagesContainer');
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+      messageElement.innerHTML = `
+        <div class="avatar"><img src="${sender === 'user' ? 'https://i.imgur.com/41EDcSS.jpeg' : 'https://i.imgur.com/LVJRT0J.jpeg'}" alt="${sender === 'user' ? 'User Avatar' : 'Bot Avatar'}"></div>
+        <div class="message-content ${sender}-message-content">
+          <span class="timestamp">${getFormattedTimestamp()}</span>
+          <div class="text">${message}</div>
+        </div>
+      `;
+      messagesContainer.appendChild(messageElement);
+      scrollToBottom(messagesContainer);
+
+      const soundElement = document.getElementById(`${sender}Sound`);
+      soundElement.play();
+    }
+
+    function scrollToBottom(element) {
+      element.scrollTop = element.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const userInput = document.getElementById('userInput').value.trim();
+      if (!userInput) {
+        return;
+      }
+
+      const messagesContainer = document.getElementById('messagesContainer');
+
+      appendMessage('user', userInput);
+
+      document.getElementById('userInput').value = '';
+
+      await generateBotResponse(userInput);
+    }
+
+    function getFormattedTimestamp() {
+      const now = new Date();
+      let hours = now.getHours();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      return `${hours}:${minutes} ${ampm}`;
+    }
+
+    removeChatHeader();
+  </script>
+</body>
+</html>

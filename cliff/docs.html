@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝗥𝗘𝗦-𝗔𝗣𝗜</title>
+  <link rel="icon" href="https://i.imgur.com/AwQlwsh.jpeg" type="image/jpeg">
+    <meta name="author" content="https://www.facebook.com/swordigo.swordslush">
+    <meta name="description" content="webtool created by cliff">
+    <meta property="og:image" content="https://i.imgur.com/AwQlwsh.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <style>
+  @import url('https://fonts.gstatic.com/s/azeretmono/v17/3XFuErsiyJsY9O_Gepph-HHvZfn23vRKV0U.woff2');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+  body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+ }
+
+   h1 {
+     font-size: 3rem;
+      margin-bottom: 20px;
+         --start-color: #FF4D4D;
+  --end-color: #F9CB28;
+  --start-color-2: #7928CA;
+  --end-color-2: #FF0080;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(-45deg, #007CF0, #00DFD8, var(--start-color-2), var(--end-color-2), var(--start-color), var(--end-color));
+  animation: gradient 5s ease-in-out infinite;
+  background-size: 400% 400%;
+   }
+  
+  @keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+  }
+
+   @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+       }
+
+     .docs-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+            overflow-y: scroll;
+            height: auto;
+            max-height: calc(100vh - 100px);
+            padding-bottom: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .docs-container::-webkit-scrollbar {
+            display: none;
+        }
+      .api-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+      }
+
+      .api-item {
+          background: rgba(255, 255, 255, 0.2);
+          padding: 20px;
+          margin: 10px;
+          border-radius: 10px;
+          transition: background 0.3s ease;
+          flex: 1 0 45%;
+          max-width: 300px;
+      }
+
+      .api-item:hover {
+          background: rgba(255, 255, 255, 0.5);
+      }
+
+      .api-link {
+          text-decoration: none;
+          color: #fff;
+          font-size: 1.2rem;
+      }
+
+      @media only screen and (max-width: 768px) {
+          .api-item {
+              flex: 1 0 90%;
+              max-width: 90%;
+          }
+      }
+     .bg {
+      width: 100%;
+      height: 100vh;
+                 background-image: url("https://i.imgur.com/z28poj5.png");
+  background-repeat: repeat;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  animation: bg-scrolling-reverse 0.92s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+    }
+
+   @-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+       }
+  
+    .glass {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .glass li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      animation: spin 5s linear infinite;
+      bottom: -150px;
+    }
+    .glass li:nth-child(1) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+    }
+    .glass li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+    .glass li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+    .glass li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+    .glass li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+    .glass li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+    .glass li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+    .glass li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+    .glass li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+    .glass li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+    @keyframes spin {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg">
+    <ul class="glass">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</head>
+<body>
+    <div class="docs-container">
+      <h1>REST-API</h1>
+        <ul class="api-list" id="apiList">
+        </ul>
+    </div>
+</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const apiEndpoints = [ 
+             { url: "/chat?prompt=&version=", description: "DIKA AI" },
+              { url: "/blackbox?ask=", description: "BLACKBOX AI" },
+              { url: "/codm", description: "Random Codm" },
+              { url: "/shoti", description: "Random Shoti" },
+              { url: "/getappstate?username=&password=", description: "cookie getter" },
+              { url: "/blackbox?ask=", description: "Blackbox" },
+                { url: "/wattpad?q=", description: "Wattpad" },
+              { url: "/spotifydl?title=", description: "spotifydl" },
+               { url: "/fbdl?url=", description: "Fbdownload" },
+                { url: "/tiksearch?search=", description: "Tiksearch" },
+              { url: "/anydownload?huys=", description: "Anydownload" },
+                { url: "/tikstalk?user=", description: "Tikstalk" },
+                { url: "/tikdl?link=", description: "Tikdown" },
+              { url: "/tiktrend", description: "TiktokTrend" },
+                { url: "/capcutdl?link=", description: "Capcutdl" },
+                { url: "/imagesearch?query=", description: "Image Search" },
+              { url: "/react?q=text", description: "Auto React" },
+                { url: "/hercai?ask=what_model_are_you", description: "Hercai Ai" },
+              { url: "/reaction?link=&type=&cookie=", description: "Fb Boost React" },
+              { url: "/boostReaction?cookie=&link=&reaction=", description: "Fb Boost ReactV2" },
+                { url: "/stalk?uid=", description: "FbStalk" },
+              { url: "/cliff/gpt3-5-turbo?ask=", description: "GPT-3-TURBO-Temporary-error" },
+              
+              { url: "/emojimix?emoji1=&emoji2=", description: "Emojimix" },
+              { url: "/guard?token=&enable=", description: "Facebook shield" },
+               { url: "/imgur2?link=", description: "imgur2" },
+              { url: "/fbshare?link=&token=&amount=&speed=", description: "Fbshare" },
+              { url: "/eaaay/api?user=&pass=", description: "EAAAY GET" },
+              { url: "/nglspam?nglusername=&message=&amount=", description: "NGL SPAM-API" },
+                { urlHHH: "/meta?prompt=hello", description: "Llama 70b" },
+              { url: "/gemini?prompt=", description: "Gemini-Pro" },
+              { url: "/chatbot", description: "GEMINI CHATBOT" },
+              { url: "/gpt4", description: "CHATGPT4 CHATBOT" },
+              { url: "/ngl", description: "Ngl Spammer" },
+              { url: "/coke", description: "COOKIE GETTER" },
+              { url: "/api/pinayflex?search=", description: "Pinayflex Search" },
+                { url: "/remini?input=", description: "Remini" },
+              { url: "/ugh", description: "FacebookProfile Guard" },
+              { url: "/appstateGetter", description: "Appstate Getter" },
+                { url: "/tempmail/message?email=", description: "Tempmail inbox" },
+                { url: "/tempmail/gen", description: "tempmail gen" },
+                { url: "/imgur?link=", description: "Imgur" },
+              { url: "/hentai", description: "Random hentai" },
+                { url: "/removebg?input=", description: "Removebg" },
+                { url: "/chesca? question=", description: "Cheska Ai" },
+                { url: "/jea?ask=", description: "Jea Ai" },
+                { url: "/izumi?ask=&id=", description: "Izumi Ai" },
+              { url: "/syugg", description: "FbreactBoost" },
+              { url: "/gpt5?prompt=", description: "NextChat Gpt4" },
+              { url: "/gemini2?prompt=", description: "NextChat Gemini" },
+              { url: "/architecture?ask=", description: "RnsChat GPT4" },
+              { url: "/conversation?message=", description: "Rapid Api GPT4" },
+              { url: "/soundcloud?url=", description: "Soundcloud Downloader" },
+              { url: "/insta?url=", description: "instagram Downloader" },
+              { url: "/capcut?url=", description: "Capcut Downloader" },
+              { url: "/spotify/search?q=", description: "Spotify Search" },
+               { url: "/yts?q=&apikey=syugg", description: "Youtube search" },
+              { url: "/ytv?url=&apikey=syugg", description: "Youtube video mp4" },     
+              { url: "/yta?url=&apikey=syugg", description: "Youtube mp3" },
+              { url: "/video?q=&apikey=syugg", description: "Youtube video" },
+              { url: "https://tiktok-downloader-06xd.onrender.com/", description: "Tiktok Downloader" },
+              { url: "/ddos/site/spam?link=", description: "DDOS WEB SITE" },
+              { url: "/gpt8/gptfun?question=", description: "Gpt-Fun" },
+              { url: "/glm/gpt9/x1?search=", description: "GLM BIGMODEL" },
+            ];
+
+            const apiList = document.getElementById("apiList");
+
+            apiEndpoints.forEach(endpoint => {
+                const listItem = document.createElement("li");
+                listItem.classList.add("api-item");
+
+                const link = document.createElement("a");
+                link.classList.add("api-link");
+                link.href = endpoint.url;
+                link.textContent = endpoint.description;
+
+                listItem.appendChild(link);
+                apiList.appendChild(listItem);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+if (typeof document.onselectstart!="undefined") {
+document.onselectstart=new Function ("return false");
+}
+else{
+document.onmousedown=new Function ("return false");
+document.onmouseup=new Function ("return true");
+}
+    </script>

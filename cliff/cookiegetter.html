@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Getter</title>
+    <link rel="icon" href="https://i.imgur.com/AkTKets.jpeg" type="image/jpeg">
+    <meta name="author" content="https://www.facebook.com/swordigo.swordslush">
+    <meta name="description" content="webtool created by cliff">
+    <meta property="og:image" content="https://i.imgur.com/AkTKets.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+           body {
+           padding: 20px;
+           font-family: 'Poppins', sans-serif;
+           color: #000000FF;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background-image: url("https://i.imgur.com/z28poj5.png");
+  background-repeat: repeat;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  animation: bg-scrolling-reverse 0.92s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+    }
+
+   @-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+       #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url("https://i.imgur.com/z28poj5.png");
+  background-repeat: repeat;
+  -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  animation: bg-scrolling-reverse 0.92s infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+    }
+
+   @-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes bg-scrolling {
+  0% {
+    background-position: 50px 50px;
+  }
+}
+
+        .container {
+            position: absolute;
+            top: 50%;
+            border: 0.5px solid #B0C8E0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+            max-width: 400px;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #101018;
+        }
+
+        .container h1 {
+            margin-bottom: 30px;
+            color: #B0C8E0; /* White color */
+            font-weight: 500;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .container form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container form label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #000000; /* White color */
+        }
+
+        .container form input {
+            padding: 12px;
+            margin-bottom: 20px;
+            width: calc(100% - 24px);
+            border-radius: 5px;
+            border: 0.5px solid #B0C8E0; /* Light gray border */
+            box-sizing: border-box;
+            font-size: 16px; /* Increased font size */
+            outline: none;
+            background-color: #101018; /* Transparent background */
+            color: #B0C8E0; /* White color */
+            transition: border-color 0.3s ease; /* Smooth transition for border color */
+        }
+
+
+        .container form button {
+            padding: 12px 20px;
+            background-color: #5888C0;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: calc(100% - 24px);
+            font-size: 16px; /* Increased font size */
+        }
+
+        .container form button:hover {
+            background-color: #7090B0; /* Darker blue color on hover */
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: 500;
+            color: #B0C8E0;
+            text-align: left;
+        }
+
+        .code-container {
+            max-height: 300px;
+            overflow: auto;
+            padding: 10px;
+            background-color: #101018;
+            border-radius: 5px;
+            border: 0.5px solid #B0C8E0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .code-container pre {
+            white-space: pre-wrap;
+            tab-size: 4;
+        }
+
+        .code-container code {
+            display: block;
+            padding: 10px;
+            background-color: #101018;
+            color: #B0C8E0;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="wrapper-container">
+       <div class="container">
+        <h2 style="text-align: center; color: #B0C8E0;" >Token Getter</h2>
+        <form id="loginForm">
+            <label for="email"></label>
+            <input type="text" id="email" name="email" placeholder="Email / Username / UID" required><br>
+
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+
+            <label style="color: #B0C8E0" for="twofactor">OPTIONAL</label>
+            <input type="text" id="twofactor" name="twofactor" placeholder="_2FA"><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div id="result" class="code-container">
+            <pre><code id="resultCode"></code></pre>
+        </div>
+         <button id="copy-button">Copy</button>
+       </div>
+
+    <script>
+document.getElementById("copy-button").style.display = "none";      document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const twofactorCode = document.getElementById('twofactor').value;
+
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password, twofactorCode })
+            });
+
+            const result = await response.json();
+            const appstate = result.token;
+            document.getElementById('resultCode').innerText = appstate;
+document.getElementById("copy-button").style.display = "block";
+        });
+
+document.getElementById("copy-button").addEventListener("click", function() {
+  const appstate = document.getElementById("resultCode").innerText;
+  navigator.clipboard.writeText(appstate).then(function() {
+    alert("Copied to clipboard!");
+  }, function(error) {
+    console.error("Failed to copy", error);
+    alert("Failed to copy. Please try again.");
+  });
+});
+    </script>
+</body>
+</html>

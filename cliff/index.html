@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIFF REST API</title>
+    <link rel="icon" href="https://i.imgur.com/AwQlwsh.jpeg" type="image/jpeg">
+    <meta name="author" content="https://www.facebook.com/swordigo.swordslush">
+    <meta name="description" content="webtool created by cliff">
+    <meta property="og:image" content="https://i.imgur.com/AwQlwsh.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>
+        @import url('https://fonts.gstatic.com/s/azeretmono/v17/3XFuErsiyJsY9O_Gepph-HHvZfn23vRKV0U.woff2');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+          font-family: 'Azeret Mono';
+        }
+
+        .context {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .context h1 {
+            text-align: center;
+            cursor: pointer;
+            font-size: 60px;
+            background: linear-gradient(
+                to right,
+                white 20%,
+                #7953cd 30%,
+                #00affa 70%,
+                #ffd700 80%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            background-size: 500% auto;
+            animation: textShine 5s ease-in-out infinite alternate;
+        }
+
+        .area {
+            background: #4e54c8;
+            background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .circles li:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .circles li:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .circles li:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .circles li:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .circles li:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .circles li:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .circles li:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .circles li:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .circles li:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .circles li:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        @keyframes textShine {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #4e54c8;
+        }
+
+        .bgcred {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bgcredit {
+            visibility: hidden;
+            width: 120px;
+            background-color: #4e54c8;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 30px;
+            right: 60px;
+        }
+
+        .bgcred:hover .bgcredit {
+            visibility: visible;
+        }
+
+        .bgcred svg {
+            width: 40px;
+            height: 40px;
+            background-color: #4e54c8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .bg {
+         width: 100%;
+         height: 100vh;
+         background-image: linear-gradient( 45deg, #240b36, #c31432);
+        }
+        .glass {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+        }
+        .glass li {
+         position: absolute;
+         display: block;
+         list-style: none;
+         width: 20px;
+         height: 20px;
+         background: rgba(255, 255, 255, 0.1);
+         border: 1px solid rgba(255, 255, 255, 0.18);
+         animation: spin 5s linear infinite;
+         bottom: -150px;
+        }
+        .glass li:nth-child(1) {
+         left: 35%;
+         width: 150px;
+         height: 150px;
+         animation-delay: 0s;
+        }
+        .glass li:nth-child(2) {
+         left: 10%;
+         width: 20px;
+         height: 20px;
+         animation-delay: 2s;
+         animation-duration: 12s;
+        }
+        .glass li:nth-child(3) {
+         left: 70%;
+         width: 20px;
+         height: 20px;
+         animation-delay: 4s;
+        }
+        .glass li:nth-child(4) {
+         left: 40%;
+         width: 60px;
+         height: 60px;
+         animation-delay: 0s;
+         animation-duration: 18s;
+        }
+        .glass li:nth-child(5) {
+         left: 65%;
+         width: 20px;
+         height: 20px;
+         animation-delay: 0s;
+        }
+        .glass li:nth-child(6) {
+         left: 75%;
+         width: 110px;
+         height: 110px;
+         animation-delay: 3s;
+        }
+        .glass li:nth-child(7) {
+         left: 35%;
+         width: 150px;
+         height: 150px;
+         animation-delay: 7s;
+        }
+        .glass li:nth-child(8) {
+         left: 50%;
+         width: 25px;
+         height: 25px;
+         animation-delay: 15s;
+         animation-duration: 45s;
+        }
+        .glass li:nth-child(9) {
+         left: 20%;
+         width: 15px;
+         height: 15px;
+         animation-delay: 2s;
+         animation-duration: 35s;
+        }
+        .glass li:nth-child(10) {
+         left: 85%;
+         width: 150px;
+         height: 150px;
+         animation-delay: 0s;
+         animation-duration: 11s;
+        }
+        @keyframes spin {
+         0% {
+           transform: translateY(0) rotate(0deg);
+           opacity: 1;
+           border-radius: 0;
+         }
+         100% {
+           transform: translateY(-1000px) rotate(720deg);
+           opacity: 0;
+           border-radius: 50%;
+         }
+        }
+</style>
+</head>
+<body>
+    <div class="bg">
+        <div class="context">
+            <a href="/home">
+                <h1>REST-API</h1>
+            </a>
+        </div>
+        <ul class="glass">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
