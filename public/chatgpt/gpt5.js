@@ -1,5 +1,5 @@
 const { RsnChat } = require("rsnchat");
-const rsnchat = new RsnChat("rsnai_q6XwhE3xUtjjW3SwxiO5xq9o");
+const rsnchat = new RsnChat("rsnai_C5Y6ZSoUt3LRAWopF6PQ2Uef");
 
 exports.name = '/architecture';
 exports.index = async (req, res) => {

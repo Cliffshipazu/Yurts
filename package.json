@@ -41,7 +41,7 @@
     "readline-sync": "^1.4.10",
     "request": "^2.88.2",
     "requests": "^0.3.0",
-    "rsnchat": "^3.0.10",
+    "rsnchat": "^4.0.1",
     "totp-generator": "^1.0.0",
     "unirest": "^0.6.0",
     "url": "^0.11.3",

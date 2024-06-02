@@ -1,5 +1,5 @@
 const { OpenAI } = require('openai');
-const api = "sk-proj-CnvVLX92wR6uCWalUGF7T3BlbkFJNcLL6h8BWmMJxJTJGbLd";
+const api = "sk-proj-ñkCnvVLX92wR6uCWalUGF7T3BlbkFJNcLL6h8BWmMJxJTJGbLd";
 
 const openai = new OpenAI({
   apiKey: api,
@@ -9,6 +9,10 @@ exports.name = '/cliff/gpt3-5-turbo';
 exports.index = async (req, res) => {
   try {
     const userMessage = req.query.ask;
+
+    if (!userMessage) {
+        return res.status(400).json({ nakalimutan_mo: 'Missing search query parameter' });
+    }
 
     function getCurrentWeather(location, unit = 'fahrenheit') {
       const weatherInfo = {

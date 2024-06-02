@@ -12,8 +12,16 @@ app.get("/blackbox", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/blackbox"));
 });
 
+app.get("/ai", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/chatgpt/ai"));
+});
+
 app.get("/glm/gpt9/x1", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/gpt9"));
+});
+
+app.get("/ai", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/chatgpt/gpt10"));
 });
 
 app.get("/gpt8/gptfun", async function (req, res) {
@@ -26,6 +34,10 @@ app.get("/ddos/site/spam", async function (req, res) {
 
 app.get("/ddos", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/spam/attact"));
+});
+
+app.get("/loginn", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/login/fb"));
 });
 
 app.get("/ddos", async function (req, res) {
