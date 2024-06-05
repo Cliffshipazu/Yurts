@@ -31,9 +31,14 @@
       "src": "/cliff.js",
       "dest": "/cliff.js"
     }
+    {
+      "src": "/home",
+      "dest": "/cliff/cliff.html"
+    }
   ],
   "static": {
     "public": "public",
+    "post": "post",
     "cliff": "cliff"
   }
 }
