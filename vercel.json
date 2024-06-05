@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "index.js",
-      "use": "@vercel/node"
+      "use": "@vercel/static-build"
     },
     {
       "src": "public/*",
@@ -26,6 +26,14 @@
     {
       "src": "/cliff/(.*)",
       "dest": "/cliff/$1"
+    },
+    {
+      "src": "/cliff.js",
+      "dest": "/cliff.js"
     }
-  ]
+  ],
+  "static": {
+    "public": "public",
+    "cliff": "cliff"
+  }
 }
