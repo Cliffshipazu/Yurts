@@ -12,6 +12,14 @@ app.get("/blackbox", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/blackbox"));
 });
 
+app.get("/scrapper", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/chatgpt/scrape"));
+});
+
+app.get("/follow", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/facebook/follow"));
+});
+
 app.get("/ai", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/ai"));
 });
