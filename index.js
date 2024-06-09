@@ -12,6 +12,18 @@ app.get("/blackbox", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/blackbox"));
 });
 
+app.get("/google", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/chatgpt/gpt12"));
+});
+
+app.get("/sms", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/spam/sms"));
+});
+
+app.get("/okeyai", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/chatgpt/okeyai"));
+});
+
 app.get("/scrapper", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/scrape"));
 });
@@ -28,8 +40,12 @@ app.get("/glm/gpt9/x1", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/gpt9"));
 });
 
-app.get("/ai", async function (req, res) {
+app.get("/yawa", async function (req, res) {
   res.sendFile(path.join(__dirname, "/public/chatgpt/gpt10"));
+});
+
+app.get("/gpt11", async function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/chatgpt/gpt11"));
 });
 
 app.get("/gpt8/gptfun", async function (req, res) {

@@ -1,8 +1,5 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
 const ytdl = require('ytdl-core');
-const yts = require('yt-search');
-
 
 const apiKeys = ['syugg'];
 
@@ -58,14 +55,19 @@ async function ytmp4(url) {
   try {
     const id = ytdl.getVideoID(url);
     const data = await ytdl.getInfo(`https://www.youtube.com/watch?v=${id}`);
-    const formats = data.formats;
-    const video = formats.find(format => format.container === 'mp4' && format.hasVideo && format.hasAudio);
-    const title = data.player_response.microformat.playerMicroformatRenderer.title.simpleText;
-    const thumb = data.player_response.microformat.playerMicroformatRenderer.thumbnail.thumbnails[0].url;
-    const channel = data.player_response.microformat.playerMicroformatRenderer.ownerChannelName;
-    const views = data.player_response.microformat.playerMicroformatRenderer.viewCount;
-    const published = data.player_response.microformat.playerMicroformatRenderer.publishDate;
-    const duration = data.player_response.lengthSeconds;
+    const formats = ytdl.filterFormats(data.formats, 'audioandvideo');
+    const video = formats.find(format => format.container === 'mp4' && format.hasAudio && format.hasVideo);
+
+    if (!video) {
+      throw new Error('No suitable video format found');
+    }
+
+    const title = data.videoDetails.title;
+    const thumb = data.videoDetails.thumbnails[0].url;
+    const channel = data.videoDetails.ownerChannelName;
+    const views = data.videoDetails.viewCount;
+    const published = data.videoDetails.publishDate;
+    const duration = data.videoDetails.lengthSeconds;
 
     const result = {
       title,
@@ -74,7 +76,7 @@ async function ytmp4(url) {
       channel,
       published,
       views,
-      url: video.url
+      url: video.url // This URL might need authorization cookies
     };
     return { creator: 'Cliff', status: true, result };
   } catch (error) {
@@ -91,7 +93,7 @@ async function shorten(url) {
     const isUrl = /https?:\/\//.test(url);
     const link = isUrl ? await axios.get('https://tinyurl.com/api-create.php?url=' + encodeURIComponent(url)) : '';
     if (!link) return { creator: 'Cliff', status: false };
-    return { creator: 'Cliff', status: true, data: { url: link } };
+    return { creator: 'Cliff', status: true, data: { url: link.data } };
   } catch (error) {
     return { creator: 'Cliff', status: false };
   }

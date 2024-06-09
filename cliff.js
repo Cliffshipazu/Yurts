@@ -1,3 +1,5 @@
+const gradient = require('gradient-string');
+
 const router = require("express").Router();
 const { readdirSync, readFileSync } = require('fs-extra');
 const path = require('path');
@@ -11,8 +13,8 @@ try {
   for (i of hosting) {
     const { index, name } = require(srcPath + i);
     router.get(name, index);
-    n++
-    console.log(i);
+    n++;
+    console.log(gradient.instagram(i));
   }
 
   // for 'post' folder
@@ -21,10 +23,9 @@ try {
   for (j of hostingPost) {
     const { index, name } = require(srcPathPost + j);
     router.post(name, index);
-    n++
-    console.log('post/' + j);
+    n++;
+    console.log(gradient.instagram('post/' + j));
   }
-
 
   // ------------------------------------------------------------------------//
   // ----------------------------/     Public    /----------------------------//
@@ -35,8 +36,8 @@ try {
     for (j of fileName) {
       const { index, name } = require(path.join(__dirname, '/public/' + dir + '/') + j);
       router.get(name, index);
-      n++
-      console.log('\x1b[38;5;46m[ LOADING ] \x1b[33m→\x1b[40m\x1b[1m\x1b[38;5;161m Successfully loaded ' + j);
+      n++;
+      console.log(gradient.instagram(`[ LOADING ] → Successfully loaded ${j}`));
     }
   }
 
@@ -47,12 +48,14 @@ try {
     for (j of fileName) {
       const { index, name } = require(path.join(__dirname, '/post/' + dir + '/') + j);
       router.post(name, index);
-      n++
-      console.log('\x1b[38;5;154m[ LOADING ] \x1b[33m→\x1b[38;5;197m Successfully loaded POST/' + j);
+      n++;
+      console.log(gradient.rainbow(`[ LOADING ] → Successfully loaded POST/${j}`));
     }
   }
-  console.log(`\x1b[38;5;154m[ LOADING ] \x1b[33m→\x1b[38;5;197m Successfully loaded ${n} API files`);
-} catch (e) { console.log(e); }
+  console.log(gradient.rainbow(`[ LOADING ] → Successfully loaded ${n} API files`));
+} catch (e) {
+  console.log(e);
+}
 
 // -------------------------->      END     <------------------------------//
 module.exports = router;

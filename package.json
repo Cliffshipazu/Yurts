@@ -26,6 +26,7 @@
     "fs-extra": "^11.2.0",
     "g4f": "^1.4.3",
     "got": "^14.2.1",
+    "gradient-string": "^2.0.2",
     "hercai": "^12.2.0",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
